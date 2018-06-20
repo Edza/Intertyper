@@ -5,6 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "debug": "vue-cli-service serve",
+    "d": "vue-cli-service serve",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
     "test:e2e": "vue-cli-service test:e2e"
@@ -26,6 +28,7 @@
     "@vue/cli-plugin-pwa": "^3.0.0-beta.15",
     "@vue/cli-plugin-typescript": "^3.0.0-beta.15",
     "@vue/cli-plugin-unit-mocha": "^3.0.0-beta.15",
+    "@vue/eslint-config-standard": "^3.0.0-beta.16",
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/eslint-config-prettier": "^3.0.0-rc.3",
     "@vue/eslint-config-typescript": "^3.0.0-rc.3",
@@ -34,7 +37,8 @@
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
-    "vue-template-compiler": "^2.5.16"
+    "vue-template-compiler": "^2.5.16",
+    "webpack-notifier": "^1.6.0"
   },
   "browserslist": [
     "> 1%",

@@ -22,3 +22,10 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
+
+.gitignore
+!.babelrc
+!.eslintrc.js
+!.gitignore
+!.postcssrc.js
+!.vscode
