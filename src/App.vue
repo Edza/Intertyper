@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Questions</router-link> |
-      <router-link to="/about">Answers</router-link>
+      <router-link to="/">Random</router-link> |
+      <router-link to="/custom">Your question and answer</router-link> |
+      <router-link to="/trends">Trends</router-link> |
+      <router-link to="/answers">Vote on answers</router-link>
     </div>
     <router-view/>
   </div>
