@@ -48,7 +48,7 @@
 /* eslint space-infix-ops: "off" */
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { QuestionGenerator } from '@/type-logic/generator'
-import EmojiPicker from 'vue-emoji-picker-fork'
+import EmojiPicker from 'vue-emoji-picker'
 
 @Component({
   components: {
