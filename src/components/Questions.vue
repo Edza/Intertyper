@@ -12,7 +12,7 @@
     <div>
     <div>
       <textarea v-model="input" id="inputbox"></textarea>
-       <emoji-picker @emoji="insert">
+       <emoji-picker @emoji="insert" :isOpen="isOpen">
           <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
               <div>
                   <div>
@@ -26,16 +26,12 @@
                                   :title="emojiName"
                                   :key="emojiName"
                               >{{ emoji }}
-                                <button  v-if="category === 'Frequently used' && index === 6" ref="openEmojis" type="button" @click.stop="moreEmojis">More emojis</button>
+                                <button  v-if="category === 'Frequently used' && index === 9" ref="openEmojis" type="button" @click.stop="moreEmojis">More emojis</button>
                               </span>
                           </div>
                       </div>
                   </div>
               </div>
-          </div>
-          <div class="emoji-invoker" slot="emoji-invoker" slot-scope="{ events }" v-on="events">
-              <button ref="openEmojis" id="openEmojis" type="button">Toggle emojis</button>
-              <!-- need bootstrap or material here, auto expanding textarea -->
           </div>
         </emoji-picker>
       </div>
@@ -52,7 +48,7 @@
 /* eslint space-infix-ops: "off" */
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { QuestionGenerator } from '@/type-logic/generator'
-import EmojiPicker from 'vue-emoji-picker'
+import EmojiPicker from 'vue-emoji-picker-fork'
 
 @Component({
   components: {
@@ -65,6 +61,7 @@ export default class Questions extends Vue {
   input = ''
   search = ''
   allEmojis = false
+  isOpen = true
 
   insert (emoji: any) {
     this.input += emoji
