@@ -7,11 +7,40 @@
       [4 EMOJIS HERE - love, neutral, hate, no-idea]<br/>
       [TEXTBOX]
       // need to save IP with request
+
+      NEEDS commenting on answers
+
+      recommend ip ban for this spammer xD
     </p> -->
+    <input type="button" value="SAVE, RELOAD AND NEXT" @click="goNext" />
+  <div>
+<!--
+flexbox
+3 rows
+
+profile pic
+
+DONE
+
+SKIP (smaller below)
+
+profile pic
+
+ -->
+
+  </div>
     </div>
     <div>
     <div>
-      <textarea v-model="input" id="inputbox"></textarea>
+      <div class="justified">
+          <vue-expand
+                id="inputbox"
+                v-model="input"
+                :placeholder="'TELL IT LIKE IT REEEEAAALLY IS!'"
+                :handler="handler"
+                min-row="3"/>
+
+        </div>
        <emoji-picker @emoji="insert" :isOpen="isOpen">
           <div slot="emoji-picker" slot-scope="{ emojis, insert, display }">
               <div>
@@ -35,11 +64,6 @@
           </div>
         </emoji-picker>
       </div>
-
-    <!-- <p>
-      What would happen? How do you see this working out?<br/> Is it a sweet pairing or one full of problems?
-      <a href="https://www.16personalities.com/personality-types" target="_blank">Look at characters again if you can't figure it out.</a>
-    </p> -->
   </div>
   </div>
 </template>
@@ -49,10 +73,12 @@
 import { Component, Prop, Vue } from 'vue-property-decorator'
 import { QuestionGenerator } from '@/type-logic/generator'
 import EmojiPicker from 'vue-emoji-picker-fork'
+import VueExpand from 'vue-expand'
 
 @Component({
   components: {
-  EmojiPicker
+  EmojiPicker,
+  VueExpand
   }
   })
 export default class Questions extends Vue {
@@ -62,6 +88,7 @@ export default class Questions extends Vue {
   search = ''
   allEmojis = false
   isOpen = true
+  handler = new Vue()
 
   insert (emoji: any) {
     this.input += emoji
@@ -69,30 +96,25 @@ export default class Questions extends Vue {
 
   mounted () {
     this.msg = this.questions.New()
-    const elem : any = this.$refs.openEmojis
-    elem.click()
   }
 
   moreEmojis () {
     this.allEmojis = !this.allEmojis
   }
+
+  goNext () {
+
+  }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<style lang="scss">
 a {
   color: #42b983;
 }
 
 .emoji {
   font-size: 40pt;
-}
-
-#inputbox {
-  font-size: 30pt;
-  width: 80%;
-  margin: 20px;
 }
 
 input {
@@ -102,4 +124,24 @@ input {
 #openEmojis {
   margin: 10px;
 }
+
+textarea{
+  padding: 10px;
+  margin: 50px auto;
+  border-radius: 6px;
+  box-shadow: 2px 2px 8px rgba(black, .3);
+  border: 0;
+  font-size: 30pt;
+  margin: 20px;
+}
+
+div.justified {
+        display: flex;
+        justify-content: center;
+    }
+
+ /* wrapper element */
+  .vue-expand {
+    width: 70%;
+  }
 </style>
