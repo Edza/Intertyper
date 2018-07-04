@@ -75,27 +75,38 @@ import { QuestionGenerator } from '@/type-logic/generator'
 import EmojiPicker from 'vue-emoji-picker-fork'
 import VueExpand from 'vue-expand'
 
+// We declare the props separately
+// to make props types inferable.
+const QuestionProps = Vue.extend({
+  props: {
+    isRandomQuestion: Boolean
+  }
+})
+
 @Component({
   components: {
   EmojiPicker,
   VueExpand
   }
   })
-export default class Questions extends Vue {
+export default class Questions extends QuestionProps {
   msg = ''
   questions = new QuestionGenerator()
   input = ''
   search = ''
   allEmojis = false
   isOpen = true
-  handler = new Vue()
 
   insert (emoji: any) {
     this.input += emoji
   }
 
   mounted () {
-    this.msg = this.questions.New()
+    if (this.isRandomQuestion) {
+      this.msg = this.questions.New()
+    } else {
+      this.msg = 'not supported'
+    }
   }
 
   moreEmojis () {
