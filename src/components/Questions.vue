@@ -1,33 +1,22 @@
 <template>
 <div>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <!-- <p>
-      // needs pics from 16personalities<br/>
-      [4 EMOJIS HERE - love, neutral, hate, no-idea]<br/>
-      [TEXTBOX]
-      // need to save IP with request
-
-      NEEDS commenting on answers
-
-      recommend ip ban for this spammer xD
-    </p> -->
-    <input type="button" value="SAVE, RELOAD AND NEXT" @click="goNext" />
+    <table class="center">
+      <tr>
+        <th rowspan="2">
+          <img class="type-img" width="350" v-if="type1 != ''" :src="`${type1Url}`" />
+        </th>
+        <th><img width="170" src="../assets/logo.jpg"></th>
+        <th rowspan="2">
+          <img class="type-img" width="350" v-if="type2 != ''" :src="`${type2Url}`" />
+        </th>
+      </tr>
+      <tr>
+        <td><img class="reload clickable" width="60" src="../assets/buttons/refresh.png" @click="goNext" /></td>
+      </tr>
+    </table>
+    <h1 class="main-question">{{ msg }}</h1>
   <div>
-<!--
-flexbox
-3 rows
-
-profile pic
-
-DONE
-
-SKIP (smaller below)
-
-profile pic
-
- -->
-
   </div>
     </div>
     <div>
@@ -49,7 +38,7 @@ profile pic
                           <div v-if="category === 'Frequently used' || (allEmojis && category === 'People')">
                               <span
                               v-if="index < 89"
-                                  class="emoji"
+                                  class="emoji clickable"
                                   v-for="(emoji, emojiName, index) in emojiGroup"
                                   @click="insert(emoji)"
                                   :title="emojiName"
@@ -71,7 +60,7 @@ profile pic
 <script lang="ts">
 /* eslint space-infix-ops: "off" */
 import { Component, Prop, Vue } from 'vue-property-decorator'
-import { QuestionGenerator } from '@/type-logic/generator'
+import { QuestionGenerator, QuestionReturnResult } from '@/type-logic/generator'
 import EmojiPicker from 'vue-emoji-picker-fork'
 import VueExpand from 'vue-expand'
 
@@ -96,6 +85,17 @@ export default class Questions extends QuestionProps {
   search = ''
   allEmojis = false
   isOpen = true
+  handler = new Vue()
+  type1 = ''
+  type2 = ''
+
+  get type1Url ():string {
+    return `./img/types/${this.type1}.png`
+  }
+
+  get type2Url ():string {
+    return `./img/types/${this.type2}.png`
+  }
 
   insert (emoji: any) {
     this.input += emoji
@@ -103,7 +103,10 @@ export default class Questions extends QuestionProps {
 
   mounted () {
     if (this.isRandomQuestion) {
-      this.msg = this.questions.New()
+      const result : QuestionReturnResult = this.questions.New()
+      this.type1 = result.type1
+      this.type2 = result.type2
+      this.msg = result.questionText
     } else {
       this.msg = 'not supported'
     }
@@ -114,7 +117,9 @@ export default class Questions extends QuestionProps {
   }
 
   goNext () {
-
+    // we will implement db logic later
+    // need to save IP with request
+    location.reload()
   }
 }
 </script>
@@ -147,12 +152,32 @@ textarea{
 }
 
 div.justified {
-        display: flex;
-        justify-content: center;
-    }
+  display: flex;
+  justify-content: center;
+}
 
- /* wrapper element */
-  .vue-expand {
-    width: 70%;
-  }
+/* wrapper element */
+.vue-expand {
+  width: 70%;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.main-question {
+  margin-top: 00px;
+  font-size: xx-large;
+  letter-spacing: 3px;
+}
+
+.reload {
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
 </style>

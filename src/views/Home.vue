@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <img width="200" src="../assets/logo.jpg">
-    <Questions/>
+    <Questions :is-random-question="true"/>
   </div>
 </template>
 

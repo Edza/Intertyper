@@ -20,7 +20,7 @@ const types: string[] = [
 const relations: string[] = [
   'in relationship with',
   'friends with',
-  'in the workplace with',
+  'as family member to',
 ]
 
 export { types, relations }
