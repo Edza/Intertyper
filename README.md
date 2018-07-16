@@ -10,3 +10,6 @@ https://github.com/Edza/Intertyper/projects/1
 
 Pick an issue:
 https://github.com/Edza/Intertyper/issues
+
+Don't know anything? We have a wiki! Update it with new knowledege about test runners and libraries:
+https://github.com/Edza/Intertyper/wiki/What-are-we-using%3F
