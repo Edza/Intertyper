@@ -7,3 +7,6 @@ Vue.js + typescript and learn how to write javascript unit tests.
 
 Here is our agile board:
 https://github.com/Edza/Intertyper/projects/1
+
+Pick an issue:
+https://github.com/Edza/Intertyper/issues
