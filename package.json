@@ -19,6 +19,7 @@
     "vue-expand": "^1.1.1",
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
+    "vue-server-renderer": "^2.5.17",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
@@ -34,7 +35,8 @@
     "@vue/cli-service": "^3.0.0-beta.15",
     "@vue/eslint-config-prettier": "^3.0.0-rc.3",
     "@vue/eslint-config-typescript": "^3.0.0-rc.3",
-    "@vue/test-utils": "^1.0.0-beta.16",
+    "@vue/test-utils": "=1.0.0-beta.22 || >1.0.0",
+    "@vue/server-test-utils": "latest",
     "chai": "^4.1.2",
     "lint-staged": "^6.0.0",
     "node-sass": "^4.9.0",
