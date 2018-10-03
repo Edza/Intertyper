@@ -1,6 +1,6 @@
 import { expect } from 'chai'
-// import { shallowMount } from '@vue/test-utils'
-import { render } from '@vue/server-test-utils'
+import { mount } from '@vue/test-utils'
+// import { render } from '@vue/server-test-utils'
 import Questions from '@/components/Questions.vue'
 
 describe('Questions.vue', () => {
@@ -8,11 +8,11 @@ describe('Questions.vue', () => {
     // currently only random questions are supported, this tests checks if there is a request
     // for non-random questions, and checks if the not supported message is dispalyed
 
-    const wrapper = render(Questions, {
+    const wrapper = mount(Questions, {
       propsData: { 'is-random-question': false }
     })
 
-    expect(wrapper).to.include('not supported')
+    expect(wrapper.html()).to.include('not supported')
   })
 })
 
